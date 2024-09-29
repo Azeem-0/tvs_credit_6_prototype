@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import UserFinance from './components/UserFinance';
+import EmiInterface from './components/EmiInterface';
 
 function App() {
   return (
-    <div className='w-screen h-screen flex items-center justify-center'>
-      <UserFinance/>
+    <div>
+      <EmiInterface />
     </div>
   );
 }

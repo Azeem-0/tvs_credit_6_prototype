@@ -58,7 +58,7 @@ const EmiInterface = () => {
                         </div>
                         <div className='w-1/2 flex justify-center items-center'>
                             <div className=' w-fit h-14 flex justify-center items-center px-4 bg-[#167E1B] min-w-[12em] text-white flex-col rounded-md'>
-                                <p>Total Intrest Payable</p>
+                                <p>Total Interest Payable</p>
                                 {emiInterface.total_interest && <p className=' font-bold'>₹ {emiInterface.total_interest}</p>}
                             </div>
                         </div>

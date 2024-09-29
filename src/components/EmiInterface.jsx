@@ -28,9 +28,9 @@ const EmiInterface = () => {
             <div className=' w-2/3 h-full bg-[#EAF4F0] flex justify-between gap-2 rounded-2xl'>
                 <div className=' ml-6 w-1/4 h-full flex justify-center items-center rounded-tl-2xl rounded-bl-2xl'>
                     <form className='flex flex-col gap-12' action="" onSubmit={null}>
-                        <input name='principal' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Loan Amount' />
-                        <input name='rate' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Rate of Interest' />
-                        <input name='tenure' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Tenure (Months)' />
+                        <input min={0} name='principal' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Loan Amount' />
+                        <input min={0} name='rate' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Rate of Interest' />
+                        <input min={0} name='tenure' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Tenure (Months)' />
                     </form>
                 </div>
                 <div className='flex flex-col justify-center gap-4 w-3/4 p-6 h-full items-center rounded-tr-2xl rounded-br-2xl'>

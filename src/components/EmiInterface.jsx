@@ -4,21 +4,21 @@ import { loanTypes } from '../constants/LoanTypeConstants';
 const EmiInterface = () => {
 
     const [emiInterface, setEmiInterface] = useState({
-        monthly_emi: null,
-        principal: null,
-        total_interest: null,
-        total_amount: null,
-        rate: null,
-        tenure: null
+        monthly_emi: '',
+        principal: '',
+        total_interest: '',
+        total_amount: '',
+        rate: '',
+        tenure: ''
     });
 
 
     const changeInput = (e) => {
         const { name, value } = e.target;
-
         setEmiInterface((prevValue) => {
             return { ...prevValue, [name]: value };
         });
+        console.log(emiInterface);
     }
 
     console.log(emiInterface);
@@ -28,9 +28,9 @@ const EmiInterface = () => {
             <div className=' w-2/3 h-full bg-[#EAF4F0] flex justify-between gap-2 rounded-2xl'>
                 <div className=' ml-6 w-1/4 h-full flex justify-center items-center rounded-tl-2xl rounded-bl-2xl'>
                     <form className='flex flex-col gap-12' action="" onSubmit={null}>
-                        <input min={0} name='principal' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Loan Amount' />
-                        <input min={0} name='rate' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Rate of Interest' />
-                        <input min={0} name='tenure' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Tenure (Months)' />
+                        <input min={0} name='principal' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Loan Amount' value={emiInterface.principal} />
+                        <input min={0} name='rate' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Rate of Interest' value={emiInterface.rate}/>
+                        <input min={0} name='tenure' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Tenure (Months)' value={emiInterface.tenure}/>
                     </form>
                 </div>
                 <div className='flex flex-col justify-center gap-4 w-3/4 p-6 h-full items-center rounded-tr-2xl rounded-br-2xl'>
@@ -46,26 +46,26 @@ const EmiInterface = () => {
                     <div className='bg-[#1BA024] w-full h-60 flex flex-wrap justify-center rounded-2xl p-6'>
                         <div className='w-1/2 flex justify-center items-center'>
                             <div className=' w-fit h-14 flex justify-center items-center px-4 bg-[#167E1B] min-w-[12em] text-white flex-col rounded-md'>
-                                <p>Monthly Emi</p>
-                                {emiInterface.monthly_emi && <p className=' font-bold'>₹ emiInterface.monthly_emi</p>}
+                                <p className={`${emiInterface.monthly_emi ? " text-xs " : " text-md "}`}>Monthly Emi</p>
+                                {emiInterface.monthly_emi && <p className=' font-bold text-lg'>₹ emiInterface.monthly_emi</p>}
                             </div>
                         </div>
                         <div className='w-1/2 flex justify-center items-center'>
                             <div className=' w-fit h-14 flex justify-center items-center px-4 bg-[#167E1B] min-w-[12em] text-white flex-col rounded-md'>
-                                <p>Prinicpal Amount</p>
-                                {emiInterface.principal && <p className=' font-bold'>₹ {emiInterface.principal}</p>}
+                                <p className={`${emiInterface.principal ? " text-xs " : " text-md "}`}>Prinicpal Amount</p>
+                                {emiInterface.principal && <p className=' font-bold text-lg'>₹ {emiInterface.principal}</p>}
                             </div>
                         </div>
                         <div className='w-1/2 flex justify-center items-center'>
                             <div className=' w-fit h-14 flex justify-center items-center px-4 bg-[#167E1B] min-w-[12em] text-white flex-col rounded-md'>
-                                <p>Total Interest Payable</p>
-                                {emiInterface.total_interest && <p className=' font-bold'>₹ {emiInterface.total_interest}</p>}
+                                <p className={`${emiInterface.total_interest ? " text-xs " : " text-md "}`}>Total Interest Payable</p>
+                                {emiInterface.total_interest && <p className=' font-bold text-lg'>₹ {emiInterface.total_interest}</p>}
                             </div>
                         </div>
                         <div className='w-1/2 flex justify-center items-center'>
                             <div className=' w-fit h-14 flex justify-center items-center px-4 bg-[#167E1B] min-w-[12em] text-white flex-col rounded-md'>
-                                <p>Total Amount Payable</p>
-                                {emiInterface.total_amount && <p className=' font-bold'>₹ {emiInterface.total_amount}</p>}
+                                <p className={`${emiInterface.total_amount ? " text-xs " : " text-md "}`}>Total Amount Payable</p>
+                                {emiInterface.total_amount && <p className=' font-bold text-lg'>₹ {emiInterface.total_amount}</p>}
                             </div>
                         </div>
                     </div>

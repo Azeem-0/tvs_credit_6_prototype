@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import interestRateData from "../constants/LoanTypeConstants.js";
-
+import EMICalculator from '../utilities/EMICalculator.js';
 const EmiInterface = () => {
 
     const [emiInterface, setEmiInterface] = useState({
@@ -16,17 +16,17 @@ const EmiInterface = () => {
 
     const changeInput = (e) => {
         const { name, value } = e.target;
-        setEmiInterface((prevValue) => {
-            return { ...prevValue, [name]: value };
-        });
+        setEmiInterface((prevValue) => (
+            { ...prevValue, [name]: value }
+        ));
     }
 
     const chooseLoanType = (e) => {
         const { value } = e.target;
 
-        setEmiInterface((prevValue) => {
-            return { ...prevValue, loan_details: interestRateData[value] }
-        });
+        setEmiInterface((prevValue) => (
+            { ...prevValue, loan_details: interestRateData[value] }
+        ));
     }
 
     const setRateUtility = () => {
@@ -41,18 +41,25 @@ const EmiInterface = () => {
             roi = emiInterface.loan_details[3];
         }
 
-        setEmiInterface((prevValue) => {
-            return { ...prevValue, rate: roi };
-        });
+        setEmiInterface((prevValue) => (
+            { ...prevValue, rate: roi }
+        ));
     }
-
+    useEffect(()=>{
+        const {principal,rate,tenure} = emiInterface;
+        if(principal&&rate&&tenure){
+            const {monthly_emi,total_interest,total_amount} = EMICalculator(Number.parseInt(emiInterface.principal),Number.parseInt(emiInterface.rate),Number.parseInt(emiInterface.tenure));
+            setEmiInterface((prevData)=>(
+                {...prevData,monthly_emi:monthly_emi,total_interest:total_interest,total_amount:total_amount}
+            ));
+        }
+    },[emiInterface.principal,emiInterface.rate,emiInterface.tenure]);
     useEffect(() => {
         if (emiInterface.tenure && emiInterface.loan_details) {
             setRateUtility();
         }
     }, [emiInterface.tenure, emiInterface.loan_details]);
 
-    console.log(emiInterface);
 
     return (
         <div className='w-screen h-1/2 flex justify-center items-center'>
@@ -78,7 +85,7 @@ const EmiInterface = () => {
                         <div className='w-1/2 flex justify-center items-center'>
                             <div className=' w-fit h-14 flex justify-center items-center px-4 bg-[#167E1B] min-w-[12em] text-white flex-col rounded-md'>
                                 <p className={`${emiInterface.monthly_emi ? " text-xs " : " text-md "}`}>Monthly Emi</p>
-                                {emiInterface.monthly_emi && <p className=' font-bold text-lg'>₹ emiInterface.monthly_emi</p>}
+                                {emiInterface.monthly_emi && <p className=' font-bold text-lg'>₹ {emiInterface.monthly_emi}</p>}
                             </div>
                         </div>
                         <div className='w-1/2 flex justify-center items-center'>

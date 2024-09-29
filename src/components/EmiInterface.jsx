@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { loanTypes } from '../constants/LoanTypeConstants';
+import interestRateData from "../constants/LoanTypeConstants.js";
 
 const EmiInterface = () => {
 
@@ -36,9 +36,9 @@ const EmiInterface = () => {
                 <div className='flex flex-col justify-center gap-4 w-3/4 p-6 h-full items-center rounded-tr-2xl rounded-br-2xl'>
 
                     <select className='w-fit text-[0.785em] h-8 translate-x-165 self-end rounded-md bg-transparent outline-none' name="Loan Type" id="Loan Type">
-                        {loanTypes.map((type, index) => (
-                            <option key={index} value={type}>
-                                {type}
+                        {interestRateData.map((type, index) => (
+                            <option key={index} value={type[0]}>
+                                {type[0]}
                             </option>
                         ))}
                     </select>

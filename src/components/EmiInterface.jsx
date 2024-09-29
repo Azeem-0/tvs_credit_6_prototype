@@ -24,9 +24,8 @@ const EmiInterface = () => {
     console.log(emiInterface);
 
     return (
-        <div className=' w-screen h-screen flex justify-center items-center'>
-            <div className=' w-[50rem] h-[30rem] bg-[#8bd4a9] flex justify-between gap-8 rounded-2xl'>
-
+        <div className='w-screen h-1/2 flex justify-center items-center'>
+            <div className=' w-2/3 h-full bg-[#8bd4a9] flex justify-between gap-2 rounded-2xl'>
                 <div className=' ml-6 w-1/4 h-full flex justify-center items-center bg-[#8bd4a9] rounded-tl-2xl rounded-bl-2xl'>
                     <form className='flex flex-col gap-12' action="" onSubmit={null}>
                         <input name='principal' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Loan Amount' />

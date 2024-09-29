@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import interestRateData from "../constants/LoanTypeConstants.js";
 
 const EmiInterface = () => {
@@ -9,7 +9,8 @@ const EmiInterface = () => {
         total_interest: '',
         total_amount: '',
         rate: '',
-        tenure: ''
+        tenure: '',
+        loan_details: null
     });
 
 
@@ -18,8 +19,38 @@ const EmiInterface = () => {
         setEmiInterface((prevValue) => {
             return { ...prevValue, [name]: value };
         });
-        console.log(emiInterface);
     }
+
+    const chooseLoanType = (e) => {
+        const { value } = e.target;
+
+        setEmiInterface((prevValue) => {
+            return { ...prevValue, loan_details: interestRateData[value] }
+        });
+    }
+
+    const setRateUtility = () => {
+        var roi;
+        if (emiInterface.tenure < 6) {
+            roi = emiInterface.loan_details[1];
+        }
+        else if (emiInterface.tenure >= 6 && emiInterface.tenure <= 12) {
+            roi = emiInterface.loan_details[2];
+        }
+        else {
+            roi = emiInterface.loan_details[3];
+        }
+
+        setEmiInterface((prevValue) => {
+            return { ...prevValue, rate: roi };
+        });
+    }
+
+    useEffect(() => {
+        if (emiInterface.tenure && emiInterface.loan_details) {
+            setRateUtility();
+        }
+    }, [emiInterface.tenure, emiInterface.loan_details]);
 
     console.log(emiInterface);
 
@@ -29,15 +60,15 @@ const EmiInterface = () => {
                 <div className=' ml-6 w-1/4 h-full flex justify-center items-center rounded-tl-2xl rounded-bl-2xl'>
                     <form className='flex flex-col gap-12' action="" onSubmit={null}>
                         <input min={0} name='principal' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Loan Amount' value={emiInterface.principal} />
-                        <input min={0} name='rate' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Rate of Interest' value={emiInterface.rate}/>
-                        <input min={0} name='tenure' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Tenure (Months)' value={emiInterface.tenure}/>
+                        <input min={0} name='rate' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Rate of Interest' value={emiInterface.rate} />
+                        <input min={0} name='tenure' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Tenure (Months)' value={emiInterface.tenure} />
                     </form>
                 </div>
                 <div className='flex flex-col justify-center gap-4 w-3/4 p-6 h-full items-center rounded-tr-2xl rounded-br-2xl'>
 
-                    <select className='w-fit text-[0.785em] h-8 translate-x-165 self-end rounded-md bg-transparent outline-none' name="Loan Type" id="Loan Type">
+                    <select className='w-fit text-[0.785em] h-8 translate-x-165 self-end rounded-md bg-transparent outline-none' name="Loan Type" id="Loan Type" onChange={chooseLoanType}>
                         {interestRateData.map((type, index) => (
-                            <option key={index} value={type[0]}>
+                            <option key={index} value={index}>
                                 {type[0]}
                             </option>
                         ))}

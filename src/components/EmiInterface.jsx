@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import interestRateData from "../constants/LoanTypeConstants.js";
 import EMICalculator from '../utilities/EMICalculator.js';
+import UserFinance from "./UserFinance.jsx";
+import { userFinanceDataContext } from '../contexts/UserFinanceContext.jsx';
+
 const EmiInterface = () => {
 
     const [emiInterface, setEmiInterface] = useState({
@@ -13,6 +16,9 @@ const EmiInterface = () => {
         loan_details: null
     });
 
+    // const [userFinance, setUserFinance] = useState(false);
+
+    const { userFPopUp, setUserFPopUp } = useContext(userFinanceDataContext);
 
     const changeInput = (e) => {
         const { name, value } = e.target;
@@ -44,16 +50,19 @@ const EmiInterface = () => {
         setEmiInterface((prevValue) => (
             { ...prevValue, rate: roi }
         ));
+
     }
-    useEffect(()=>{
-        const {principal,rate,tenure} = emiInterface;
-        if(principal&&rate&&tenure){
-            const {monthly_emi,total_interest,total_amount} = EMICalculator(Number.parseInt(emiInterface.principal),Number.parseInt(emiInterface.rate),Number.parseInt(emiInterface.tenure));
-            setEmiInterface((prevData)=>(
-                {...prevData,monthly_emi:monthly_emi,total_interest:total_interest,total_amount:total_amount}
+
+    useEffect(() => {
+        const { principal, rate, tenure } = emiInterface;
+        if (principal && rate && tenure) {
+            const { monthly_emi, total_interest, total_amount } = EMICalculator(Number.parseInt(emiInterface.principal), Number.parseInt(emiInterface.rate), Number.parseInt(emiInterface.tenure));
+            setEmiInterface((prevData) => (
+                { ...prevData, monthly_emi: monthly_emi, total_interest: total_interest, total_amount: total_amount }
             ));
         }
-    },[emiInterface.principal,emiInterface.rate,emiInterface.tenure]);
+    }, [emiInterface.principal, emiInterface.rate, emiInterface.tenure]);
+
     useEffect(() => {
         if (emiInterface.tenure && emiInterface.loan_details) {
             setRateUtility();
@@ -63,12 +72,17 @@ const EmiInterface = () => {
 
     return (
         <div className='w-screen h-1/2 flex justify-center items-center'>
+
+            {userFPopUp && <div className='flex justify-center items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-3/4 z-10 rounded-md'>
+                <UserFinance />
+            </div>}
+
             <div className=' w-2/3 h-full bg-[#EAF4F0] flex justify-between gap-2 rounded-2xl'>
                 <div className=' ml-6 w-1/4 h-full flex justify-center items-center rounded-tl-2xl rounded-bl-2xl'>
                     <form className='flex flex-col gap-12' action="" onSubmit={null}>
-                        <input min={0} name='principal' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Loan Amount (in rupees)' value={emiInterface.principal} />
-                        <input min={0} name='rate' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Rate of Interest (%)' value={emiInterface.rate} />
-                        <input min={0} name='tenure' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Tenure (Months)' value={emiInterface.tenure} />
+                        <input min={0} max={1000000} name='principal' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Loan Amount (in rupees)' value={emiInterface.principal} />
+                        <input min={0} max={100} name='rate' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Rate of Interest (%)' value={emiInterface.rate} />
+                        <input min={0} max={120} name='tenure' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Tenure (Months)' value={emiInterface.tenure} />
                     </form>
                 </div>
                 <div className='flex flex-col justify-center gap-4 w-3/4 p-6 h-full items-center rounded-tr-2xl rounded-br-2xl'>
@@ -107,10 +121,17 @@ const EmiInterface = () => {
                             </div>
                         </div>
                     </div>
-                    <button className='p-2 text-center text-xs bg-black text-white rounded-md'>Compare To</button>
+                    <div className='w-full flex justify-around'>
+                        <button className='custom-button'>Compare To</button>
+                        <button onClick={() => {
+                            setUserFPopUp((prev) => (
+                                !prev
+                            ));
+                        }} className='custom-button'>Add Personal Data</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

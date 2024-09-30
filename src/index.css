@@ -9,3 +9,12 @@
     opacity: .8;
     border-radius: 5px;
 }
+
+.custom-button {
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.75rem;
+    background-color: black;
+    color: white;
+    border-radius: 0.375rem;
+}

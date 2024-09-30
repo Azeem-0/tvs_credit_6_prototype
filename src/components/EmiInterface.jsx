@@ -34,6 +34,25 @@ const EmiInterface = () => {
         });
     }
 
+    const addNewComparision = ()=>{
+        console.log("I have been clicked!")
+        setEmiInterface((prevValue)=>(
+            [
+                ...prevValue,
+                {
+                    monthly_emi: '',
+                    principal: '',
+                    total_interest: '',
+                    total_amount: '',
+                    rate: '',
+                    tenure: '',
+                    loan_details: null
+                }
+            ]
+        ));
+        setCurrCard((currCard)=>currCard+1);
+    }
+
     const setRateUtility = () => {
         let roi;
         const currentCard = emiInterface[currCard];
@@ -123,7 +142,10 @@ const EmiInterface = () => {
                             </div>
                         </div>
                     </div>
-                    <button disabled={!emiInterface[currCard].monthly_emi} className={`${emiInterface[currCard].monthly_emi ? " opacity-100 " : " opacity-50 "} p-2 text-center text-xs bg-black text-white rounded-md`}>Compare To</button>
+                    <div className='flex items-center justify-center w-full gap-4'>
+                        <button onClick={addNewComparision} disabled={!emiInterface[currCard].monthly_emi} className={`${emiInterface[currCard].monthly_emi ? " opacity-100 " : " opacity-50 "} mx-1 p-2 text-center text-xs bg-black text-white rounded-md`}>Compare To</button>
+                        <button className={`${currCard >= 1 ? " block " : " hidden "} p-2 text-center text-xs bg-black mx-1 text-white rounded-md`}>Predict</button>
+                    </div>
                 </div>
             </div>
         </div>

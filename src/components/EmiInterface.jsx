@@ -156,7 +156,7 @@ const EmiInterface = () => {
                         </div>
                     </div>
                     <div className='w-full flex justify-around'>
-                        <button className='custom-button'>Compare To</button>
+                        <button onClick={addNewComparision} className='custom-button'>Compare To</button>
                         <button onClick={() => {
                             setUserFPopUp((prev) => (
                                 !prev

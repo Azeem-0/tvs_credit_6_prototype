@@ -157,7 +157,7 @@ const EmiInterface = () => {
                         </div>
                     </div>
                     <div className='w-full flex justify-around'>
-                        <button onClick={addNewComparision} className='custom-button'>Compare To</button>
+                        <button onClick={addNewComparision} className={`${(emiInterface[currCard].principal&&emiInterface[currCard].rate&&emiInterface[currCard].tenure) ? " opacity-100 " : " opacity-80 cursor-not-allowed"} custom-button`} disabled={!(emiInterface[currCard].principal&&emiInterface[currCard].rate&&emiInterface[currCard].tenure)}>Compare To</button>
                         <button onClick={() => {
                             setUserFPopUp((prev) => (
                                 !prev

@@ -13,7 +13,7 @@ const EmiInterface = () => {
         rate: '',
         tenure: '',
         loan_details: null,
-        prediction : 65
+        prediction : 0
     }]);
     const {financeData} = useContext(userFinanceDataContext);
     const { userFPopUp, setUserFPopUp } = useContext(userFinanceDataContext);

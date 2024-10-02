@@ -39,7 +39,6 @@ const EmiInterface = () => {
     }
 
     const addNewComparision = () => {
-        console.log("I have been clicked!")
         setEmiInterface((prevValue) => (
             [
                 ...prevValue,

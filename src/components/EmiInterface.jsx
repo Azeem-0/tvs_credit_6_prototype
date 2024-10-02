@@ -163,10 +163,10 @@ const EmiInterface = () => {
                                 !prev
                             ));
                         }} className='custom-button'>Add Personal Data</button>
-                        <button className={`${currCard >= 1 ? " block " : " hidden "} p-2 text-center text-xs bg-black mx-1 text-white rounded-md custom-button`}>Predict</button>
+                        <button className={`${currCard >= 1 ? " block " : " hidden "} custom-button`}>Predict</button>
                     </div>
                 </div>
-            </div >
+            </div>
         </div>
     )
 }

@@ -2,13 +2,18 @@ import logo from './logo.svg';
 import './App.css';
 import EmiInterface from "./components/EmiInterface.jsx";
 import UserFinanceContext from "./contexts/UserFinanceContext.jsx";
-// import UserFinanceContext from './components/UserFinanceContext';
-
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Prediction from "./components/Prediction.jsx";
 function App() {
   return (
     <div className='flex items-center justify-center w-screen h-screen'>
       <UserFinanceContext>
-        <EmiInterface />
+    <Router>
+        <Routes>
+          <Route path="/predict" element={<Prediction/>}/>
+          <Route path="/" element={<EmiInterface />}/>
+        </Routes>
+    </Router>
       </UserFinanceContext>
     </div>
   );

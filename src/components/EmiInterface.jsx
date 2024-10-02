@@ -3,7 +3,7 @@ import interestRateData from "../constants/LoanTypeConstants.js";
 import EMICalculator from '../utilities/EMICalculator.js';
 import UserFinance from "./UserFinance.jsx";
 import { userFinanceDataContext } from '../contexts/UserFinanceContext.jsx';
-
+import { useNavigate } from 'react-router-dom';
 const EmiInterface = () => {
     const [emiInterface, setEmiInterface] = useState([{
         monthly_emi: '',
@@ -78,6 +78,10 @@ const EmiInterface = () => {
         });
     }
 
+    const navigate = useNavigate();
+    const handlePredict = ()=>{
+        navigate("/predict",{state:emiInterface});
+    }
     useEffect(() => {
         const { principal, rate, tenure } = emiInterface[currCard];
         if (principal && rate && tenure) {
@@ -157,7 +161,7 @@ const EmiInterface = () => {
                     </div>
                     <div className='w-full flex justify-around'>
                         <button onClick={addNewComparision} className={`${(emiInterface[currCard].principal&&emiInterface[currCard].rate&&emiInterface[currCard].tenure) ? " opacity-100 " : " opacity-50 cursor-not-allowed"} custom-button`} disabled={!(emiInterface[currCard].principal&&emiInterface[currCard].rate&&emiInterface[currCard].tenure)}>Compare To</button>
-                        <button className={`${currCard >= 1 ? " block " : " hidden "} custom-button ${financeData.income&&financeData.savings&&financeData.debts&&financeData.emi ? " opacity-100 " : " opacity-50 cursor-not-allowed "}`}>Predict</button>
+                        <button onClick={handlePredict} className={`${currCard >= 1 ? " block " : " hidden "} custom-button ${financeData.income&&financeData.savings&&financeData.debts&&financeData.emi ? " opacity-100 " : " opacity-50 cursor-not-allowed "}`}>Predict</button>
                         <button onClick={() => {
                             setUserFPopUp((prev) => (
                                 !prev
@@ -169,5 +173,4 @@ const EmiInterface = () => {
         </div>
     )
 }
-
 export default EmiInterface;

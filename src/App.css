@@ -18,11 +18,9 @@
   outline: none !important;
   padding: 1%;
 }
-.custom-input{
+.custom-input {
   width: 100%;
   margin-bottom: 2dvw;
-}
-.custom-input {
   font-weight: bolder;
   border: 1px solid black;
   opacity: .8;

@@ -12,35 +12,35 @@ export default function Prediction(data) {
     <div className='flex items-center justify-around w-4/5 bg-[#EAF4F0] p-2 rounded-xl overflow-x-scroll'>
       {cards.map((card,i)=>(
         <div className='bg-[#8ED693] w-fit min-w-80 m-2 p-2 rounded-xl items-center justify-center'>
-            <div className='w-fit p-1 flex items-center justify-center flex-col mx-auto'>
+            <div className='w-fit p-1 flex items-center justify-center flex-col mx-auto shadow-2xl rounded-xl m-4'>
                 <div className='w-full flex items-center justify-start p-2'>
-                    <p className='text-gray-500 mx-2'>Loan Amount</p>
+                    <p className='text-gray-500 mx-2 text-lg'>Loan Amount</p>
                     <>
-                    <p className='font-extrabold'>₹{card.principal}</p>
+                    <p className='font-extrabold text-lg'>₹{card.principal}</p>
                     <img alt='principal' src='https://media.lordicon.com/icons/wired/lineal/291-coin-dollar.svg' className='w-6'/>
                     </>
                 </div>
                 <div className='w-full flex items-center justify-start p-2'>
-                    <p className='text-gray-500 mx-2'>Rate of Interest</p>
+                    <p className='text-gray-500 mx-2 text-lg'>Rate of Interest</p>
                     <>
-                    <p className='font-extrabold'>{card.rate}% </p>
+                    <p className='font-extrabold text-lg'>{card.rate}% </p>
                     <img alt='principal' src='https://cdn-icons-png.flaticon.com/512/10017/10017583.png' className='w-8'/>
                     </>
                 </div>
                 <div className='w-full flex items-center justify-start p-2'>
-                    <p className='text-gray-500 mx-2'>Tenure</p>
+                    <p className='text-gray-500 mx-2 text-lg'>Tenure</p>
                     <>
-                    <p className='font-extrabold'>{card.tenure} months </p>
+                    <p className='font-extrabold text-lg'>{card.tenure} months </p>
                     <img alt='principal' src='https://media.lordicon.com/icons/wired/lineal/45-clock-time.svg' className='w-8'/>
                     </>
                 </div>
             </div>
             <div className='flex items-center justify-around w-full text-white'>
-                <div className='bg-[#167E1B] flex items-center justify-center flex-col p-2 w-fit rounded-xl'>
+                <div className='bg-[#167E1B] flex items-center justify-center flex-col p-2 w-fit rounded-xl scale-95'>
                     <p className='text-xs font-medium'>Monthly Loan EMI</p>
                     <p className='text-xl font-bold'>₹{card?.monthly_emi??0}</p>
                 </div>
-                <div className='bg-[#167E1B] flex items-center justify-center flex-col p-2 w-fit rounded-xl'>
+                <div className='bg-[#167E1B] flex items-center justify-center flex-col p-2 w-fit rounded-xl scale-95'>
                     <p className='text-xs font-medium'>Total Amount Payable</p>
                     <p className='text-xl font-bold'>₹{card?.total_amount??0}</p>
                 </div>

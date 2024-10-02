@@ -126,9 +126,9 @@ const EmiInterface = () => {
                 {currCard > 0 && <p className='top-0 bg-[#167E1B] w-8 h-8 flex items-center justify-center rounded-full font-extrabold text-white'>{currCard}</p>}
                 <div className='w-1/4 h-full flex justify-center items-center m-2 p-2'>
                     <form className='flex flex-col w-full'>
-                        <input min={0} max={1000000} name='principal' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Loan Amount (in rupees)' value={emiInterface[currCard].principal} />
-                        <input min={0} max={100} name='rate' className='custom-input p-2 read-only-input' type="number" onChange={changeInput} placeholder='Rate of Interest (%)' value={emiInterface[currCard].rate} disabled/>
-                        <input min={0} max={120} name='tenure' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Tenure (Months)' value={emiInterface[currCard].tenure} />
+                        <input min={1} max={1000000} name='principal' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Loan Amount (in rupees)' value={emiInterface[currCard].principal} />
+                        <input min={1} max={100} name='rate' className='custom-input p-2 read-only-input' type="number" onChange={changeInput} placeholder='Rate of Interest (%)' value={emiInterface[currCard].rate} disabled/>
+                        <input min={1} max={120} name='tenure' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Tenure (Months)' value={emiInterface[currCard].tenure} />
                     </form>
                 </div>
                 <div className='flex flex-col justify-center w-3/4 p-6 h-full items-center rounded-tr-2xl rounded-br-2xl'>

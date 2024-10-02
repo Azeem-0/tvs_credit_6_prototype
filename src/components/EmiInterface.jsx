@@ -80,7 +80,13 @@ const EmiInterface = () => {
 
     const navigate = useNavigate();
     const handlePredict = ()=>{
-        navigate("/predict",{state:emiInterface});
+        setEmiInterface((prevData)=>{
+            const stateCopy = [...prevData];
+            stateCopy.pop();
+            setCurrCard(currCard-1);
+            navigate("/predict",{state:stateCopy});
+            return stateCopy;
+        });
     }
     useEffect(() => {
         const { principal, rate, tenure } = emiInterface[currCard];

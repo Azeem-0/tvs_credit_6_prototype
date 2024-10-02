@@ -122,8 +122,8 @@ const EmiInterface = () => {
                         <input min={0} max={120} name='tenure' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Tenure (Months)' value={emiInterface[currCard].tenure} />
                     </form>
                 </div>
-                <div className='flex flex-col justify-center gap-4 w-3/4 p-6 h-full items-center rounded-tr-2xl rounded-br-2xl'>
-                    <select className='w-fit text-[0.785em] h-8 translate-x-165 self-end rounded-md bg-transparent outline-none' name="Loan Type" id="loan-type" onChange={chooseLoanType}>
+                <div className='flex flex-col justify-center w-3/4 p-6 h-full items-center rounded-tr-2xl rounded-br-2xl'>
+                    <select className='w-fit text-sm h-8 self-end rounded-md bg-transparent outline-none m-0' name="Loan Type" id="loan-type" onChange={chooseLoanType}>
                         {interestRateData.map((type, index) => (
                             <option key={index} value={index}>
                                 {type[0]}
@@ -163,7 +163,7 @@ const EmiInterface = () => {
                                 !prev
                             ));
                         }} className='custom-button'>Add Personal Data</button>
-                        <button className={`${currCard >= 1 ? " block " : " hidden "} p-2 text-center text-xs bg-black mx-1 text-white rounded-md`}>Predict</button>
+                        <button className={`${currCard >= 1 ? " block " : " hidden "} p-2 text-center text-xs bg-black mx-1 text-white rounded-md custom-button`}>Predict</button>
                     </div>
                 </div>
             </div >

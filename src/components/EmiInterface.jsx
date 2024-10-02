@@ -14,7 +14,7 @@ const EmiInterface = () => {
         tenure: '',
         loan_details: null
     }]);
-
+    const {financeData} = useContext(userFinanceDataContext);
     const { userFPopUp, setUserFPopUp } = useContext(userFinanceDataContext);
 
     const [currCard, setCurrCard] = useState(0);
@@ -157,12 +157,12 @@ const EmiInterface = () => {
                     </div>
                     <div className='w-full flex justify-around'>
                         <button onClick={addNewComparision} className={`${(emiInterface[currCard].principal&&emiInterface[currCard].rate&&emiInterface[currCard].tenure) ? " opacity-100 " : " opacity-50 cursor-not-allowed"} custom-button`} disabled={!(emiInterface[currCard].principal&&emiInterface[currCard].rate&&emiInterface[currCard].tenure)}>Compare To</button>
+                        <button className={`${currCard >= 1 ? " block " : " hidden "} custom-button ${financeData.income&&financeData.savings&&financeData.debts&&financeData.emi ? " opacity-100 " : " opacity-50 cursor-not-allowed "}`}>Predict</button>
                         <button onClick={() => {
                             setUserFPopUp((prev) => (
                                 !prev
                             ));
                         }} className='custom-button'>Add Personal Data</button>
-                        <button className={`${currCard >= 1 ? " block " : " hidden "} custom-button`}>Predict</button>
                     </div>
                 </div>
             </div>

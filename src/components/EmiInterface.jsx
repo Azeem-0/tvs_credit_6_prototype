@@ -5,7 +5,6 @@ import UserFinance from "./UserFinance.jsx";
 import { userFinanceDataContext } from '../contexts/UserFinanceContext.jsx';
 
 const EmiInterface = () => {
-
     const [emiInterface, setEmiInterface] = useState([{
         monthly_emi: '',
         principal: '',
@@ -56,6 +55,8 @@ const EmiInterface = () => {
             ]
         ));
         setCurrCard((currCard) => currCard + 1);
+        const dropDown = document.getElementById("loan-type");
+        dropDown.selectedIndex = 0;
     }
 
     const setRateUtility = () => {
@@ -122,7 +123,7 @@ const EmiInterface = () => {
                     </form>
                 </div>
                 <div className='flex flex-col justify-center gap-4 w-3/4 p-6 h-full items-center rounded-tr-2xl rounded-br-2xl'>
-                    <select className='w-fit text-[0.785em] h-8 translate-x-165 self-end rounded-md bg-transparent outline-none' name="Loan Type" id="Loan Type" onChange={chooseLoanType}>
+                    <select className='w-fit text-[0.785em] h-8 translate-x-165 self-end rounded-md bg-transparent outline-none' name="Loan Type" id="loan-type" onChange={chooseLoanType}>
                         {interestRateData.map((type, index) => (
                             <option key={index} value={index}>
                                 {type[0]}

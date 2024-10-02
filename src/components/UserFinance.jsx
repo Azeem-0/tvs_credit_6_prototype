@@ -39,12 +39,12 @@ export default function UserFinance() {
             <div className='flex items-center justify-around p-2.5 w-full m-2'>
                 <div className='flex flex-col items-center justify-between gap-2 w-2/4 h-2/4'>
                     <div className=" flex flex-row justify-between gap-3">
-                        <input name='income' onChange={handleFormChange} type='number' min={0} className='custom-input' placeholder='Monthly Income (in thousands)' required />
-                        <input name='savings' onChange={handleFormChange} type='number' min={0} className='custom-input' placeholder='Monthly Savings (in thousands)' required />
+                        <input name='income' onChange={handleFormChange} type='number' min={0} className='custom-input p-2' placeholder='Monthly Income (in thousands)' required title="Monthly Income (in thousands)"/>
+                        <input name='savings' onChange={handleFormChange} type='number' min={0} className='custom-input p-2' placeholder='Monthly Savings (in thousands)' required title="Monthly Savings (in thousands)"/>
                     </div>
                     <div className=" flex flex-row justify-between gap-3">
-                        <input name='debts' onChange={handleFormChange} type='number' min={0} className='custom-input' placeholder='Monthly Debts (in thousands)' required />
-                        <input name='emi' onChange={handleFormChange} type='number' min={0} className='custom-input' placeholder='Safe EMI limit (in thousands)' required />
+                        <input name='debts' onChange={handleFormChange} type='number' min={0} className='custom-input p-2' placeholder='Monthly Debts (in thousands)' required />
+                        <input name='emi' onChange={handleFormChange} type='number' min={0} className='custom-input p-2' placeholder='Safe EMI limit (in thousands)' required />
                     </div>
                 </div>
                 <div className='flex flex-col items-center justify-center w-1/4 h-full'>

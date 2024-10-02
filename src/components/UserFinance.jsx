@@ -33,8 +33,8 @@ export default function UserFinance() {
     console.log(JSON.parse(localStorage.getItem('user')));
 
     return (
-        <div className=' relative w-3/4 h-3/4 bg-[#EBF4F1] h-fill flex items-center justify-between flex-col p-2 m-auto rounded-2xl'>
-            <ImCross onClick={toggleUserFinance} className="absolute top-5 right-5 cursor-pointer rounded-xl" />
+        <div className=' relative w-3/4 h-3/4 bg-[#EBF4F1] h-fill flex items-center justify-center flex-col p-2 m-auto rounded-2xl'>
+            <ImCross onClick={toggleUserFinance} className="absolute top-10 right-10 cursor-pointer rounded-xl text-red-600 m-2" />
             <h5 className='text-xl m-2 font-bold'>Let us know you!</h5>
             <div className='flex items-center justify-around p-2.5 w-full m-2'>
                 <div className='flex flex-col items-center justify-between gap-2 w-2/4 h-2/4'>

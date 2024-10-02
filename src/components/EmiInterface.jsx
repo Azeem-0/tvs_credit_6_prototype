@@ -16,8 +16,6 @@ const EmiInterface = () => {
         loan_details: null
     }]);
 
-    // const [userFinance, setUserFinance] = useState(false);
-
     const { userFPopUp, setUserFPopUp } = useContext(userFinanceDataContext);
 
     const [currCard, setCurrCard] = useState(0);

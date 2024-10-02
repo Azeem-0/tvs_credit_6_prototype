@@ -4,6 +4,7 @@ import EMICalculator from '../utilities/EMICalculator.js';
 import UserFinance from "./UserFinance.jsx";
 import { userFinanceDataContext } from '../contexts/UserFinanceContext.jsx';
 import { useNavigate } from 'react-router-dom';
+import { predictionUtility } from '../utilities/PredictionUtility.js';
 const EmiInterface = () => {
     const [emiInterface, setEmiInterface] = useState([{
         monthly_emi: '',
@@ -13,9 +14,11 @@ const EmiInterface = () => {
         rate: '',
         tenure: '',
         loan_details: null,
-        prediction : 0
+        prediction: 0
     }]);
-    const {financeData} = useContext(userFinanceDataContext);
+    const { financeData } = useContext(userFinanceDataContext);
+    const { income, savings, debts, emi } = financeData;
+
     const { userFPopUp, setUserFPopUp } = useContext(userFinanceDataContext);
 
     const [currCard, setCurrCard] = useState(0);
@@ -39,21 +42,32 @@ const EmiInterface = () => {
         });
     }
 
-    const addNewComparision = () => {
-        setEmiInterface((prevValue) => (
-            [
-                ...prevValue,
-                {
-                    monthly_emi: '',
-                    principal: '',
-                    total_interest: '',
-                    total_amount: '',
-                    rate: '',
-                    tenure: '',
-                    loan_details: null
-                }
-            ]
-        ));
+    const addNewComparision = async () => {
+        const pred = await predictionUtility(parseInt(income), parseInt(savings), parseInt(debts), parseInt(emi), parseInt(emiInterface[currCard].monthly_emi), parseInt(emiInterface[currCard].total_amount));
+
+        setEmiInterface((prevArray) => {
+
+            const updatedEmiInterface = prevArray.map((item, index) =>
+                index === currCard
+                    ? { ...item, prediction: pred }
+                    : item
+            );
+
+            updatedEmiInterface.push({
+                monthly_emi: '',
+                principal: '',
+                total_interest: '',
+                total_amount: '',
+                rate: '',
+                tenure: '',
+                loan_details: null,
+                prediction: 0
+            });
+
+            return updatedEmiInterface;
+
+        });
+
         setCurrCard((currCard) => currCard + 1);
         const dropDown = document.getElementById("loan-type");
         dropDown.selectedIndex = 0;
@@ -80,15 +94,16 @@ const EmiInterface = () => {
     }
 
     const navigate = useNavigate();
-    const handlePredict = ()=>{
-        setEmiInterface((prevData)=>{
+    const handlePredict = () => {
+        setEmiInterface((prevData) => {
             const stateCopy = [...prevData];
             stateCopy.pop();
-            setCurrCard(currCard-1);
-            navigate("/predict",{state:stateCopy});
+            setCurrCard(currCard - 1);
+            navigate("/predict", { state: stateCopy });
             return stateCopy;
         });
     }
+
     useEffect(() => {
         const { principal, rate, tenure } = emiInterface[currCard];
         if (principal && rate && tenure) {
@@ -110,6 +125,8 @@ const EmiInterface = () => {
         }
     }, [emiInterface[currCard].principal, emiInterface[currCard].rate, emiInterface[currCard].tenure]);
 
+    console.log(!localStorage.getItem('user'));
+
     useEffect(() => {
         if (emiInterface[currCard].tenure && emiInterface[currCard].loan_details) {
             setRateUtility();
@@ -128,7 +145,7 @@ const EmiInterface = () => {
                 <div className='w-1/4 h-full flex justify-center items-center m-2 p-2'>
                     <form className='flex flex-col w-full'>
                         <input min={1} max={1000000} name='principal' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Loan Amount (in rupees)' value={emiInterface[currCard].principal} />
-                        <input min={1} max={100} name='rate' className='custom-input p-2 read-only-input' type="number" onChange={changeInput} placeholder='Rate of Interest (%)' value={emiInterface[currCard].rate} disabled/>
+                        <input min={1} max={100} name='rate' className='custom-input p-2 read-only-input' type="number" onChange={changeInput} placeholder='Rate of Interest (%)' value={emiInterface[currCard].rate} disabled />
                         <input min={1} max={120} name='tenure' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Tenure (Months)' value={emiInterface[currCard].tenure} />
                     </form>
                 </div>
@@ -167,8 +184,8 @@ const EmiInterface = () => {
                         </div>
                     </div>
                     <div className='w-full flex justify-around'>
-                        <button onClick={addNewComparision} className={`${(emiInterface[currCard].principal&&emiInterface[currCard].rate&&emiInterface[currCard].tenure) ? " opacity-100 " : " opacity-50 cursor-not-allowed"} custom-button`} disabled={!(emiInterface[currCard].principal&&emiInterface[currCard].rate&&emiInterface[currCard].tenure)}>Compare To</button>
-                        <button onClick={handlePredict} className={`${currCard >= 1 ? " block " : " hidden "} custom-button ${financeData.income&&financeData.savings&&financeData.debts&&financeData.emi ? " opacity-100 " : " opacity-50 cursor-not-allowed "}`}>Predict</button>
+                        <button onClick={addNewComparision} className={`${(emiInterface[currCard].principal && emiInterface[currCard].rate && emiInterface[currCard].tenure && localStorage.getItem('user')) ? " opacity-100 " : " opacity-50 cursor-not-allowed"} custom-button`} title={`${(!(emiInterface[currCard].principal && emiInterface[currCard].rate && emiInterface[currCard].tenure) || !localStorage.getItem('user')) ? 'please fill details' : ''}`} disabled={(!(emiInterface[currCard].principal && emiInterface[currCard].rate && emiInterface[currCard].tenure)) || !localStorage.getItem('user')}>Compare To</button>
+                        <button onClick={handlePredict} className={`${currCard >= 1 ? " block " : " hidden "} custom-button ${financeData.income && financeData.savings && financeData.debts && financeData.emi ? " opacity-100 " : " opacity-50 cursor-not-allowed "}`}>Predict</button>
                         <button onClick={() => {
                             setUserFPopUp((prev) => (
                                 !prev

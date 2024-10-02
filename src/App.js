@@ -1,11 +1,9 @@
-import logo from './logo.svg';
+
 import './App.css';
 import EmiInterface from "./components/EmiInterface.jsx";
 import UserFinanceContext from "./contexts/UserFinanceContext.jsx";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Prediction from "./components/Prediction.jsx";
-import PredictionUtility from './utilities/PredictionUtility.jsx';
-// import UserFinanceContext from './components/UserFinanceContext';
 
 function App() {
   return (

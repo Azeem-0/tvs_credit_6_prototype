@@ -26,7 +26,11 @@
   opacity: .8;
   border-radius: 5px;
 }
-
+.read-only-input{
+  border: none!important;
+  border-bottom: 5px solid #000;
+  cursor: not-allowed;
+}
 .custom-button {
   text-align: center;
   font-size: 0.75rem;

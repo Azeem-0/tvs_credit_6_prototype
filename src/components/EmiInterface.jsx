@@ -118,7 +118,7 @@ const EmiInterface = () => {
                 <div className='w-1/4 h-full flex justify-center items-center m-2'>
                     <form className='flex flex-col w-full'>
                         <input min={0} max={1000000} name='principal' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Loan Amount (in rupees)' value={emiInterface[currCard].principal} />
-                        <input min={0} max={100} name='rate' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Rate of Interest (%)' value={emiInterface[currCard].rate} />
+                        <input min={0} max={100} name='rate' className='custom-input p-2 read-only-input' type="number" onChange={changeInput} placeholder='Rate of Interest (%)' value={emiInterface[currCard].rate} disabled/>
                         <input min={0} max={120} name='tenure' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Tenure (Months)' value={emiInterface[currCard].tenure} />
                     </form>
                 </div>

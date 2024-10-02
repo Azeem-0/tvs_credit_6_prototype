@@ -38,11 +38,11 @@ export default function Prediction(data) {
             <div className='flex items-center justify-around w-full text-white'>
                 <div className='bg-[#167E1B] flex items-center justify-center flex-col p-2 w-fit rounded-xl'>
                     <p className='text-xs font-medium'>Monthly Loan EMI</p>
-                    <p className='text-xl font-bold'>{card?.monthly_emi??0}/-</p>
+                    <p className='text-xl font-bold'>₹{card?.monthly_emi??0}</p>
                 </div>
                 <div className='bg-[#167E1B] flex items-center justify-center flex-col p-2 w-fit rounded-xl'>
                     <p className='text-xs font-medium'>Total Amount Payable</p>
-                    <p className='text-xl font-bold'>{card?.total_amount??0}/-</p>
+                    <p className='text-xl font-bold'>₹{card?.total_amount??0}</p>
                 </div>
             </div>
         </div>

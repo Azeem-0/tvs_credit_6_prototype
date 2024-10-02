@@ -113,10 +113,10 @@ const EmiInterface = () => {
                 <UserFinance />
             </div>}
 
-            <div className=' w-2/3 h-full bg-[#EAF4F0] flex justify-between gap-2 rounded-2xl'>
+            <div className=' w-2/3 h-full bg-[#EAF4F0] flex justify-between rounded-2xl'>
                 {currCard > 0 && <p className='top-0 bg-[#167E1B] w-8 h-8 flex items-center justify-center rounded-full font-extrabold text-white'>{currCard}</p>}
-                <div className=' ml-6 w-1/4 h-full flex justify-center items-center rounded-tl-2xl rounded-bl-2xl'>
-                    <form className='flex flex-col gap-12' action="" onSubmit={null}>
+                <div className='w-1/4 h-full flex justify-center items-center m-2'>
+                    <form className='flex flex-col w-full'>
                         <input min={0} max={1000000} name='principal' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Loan Amount (in rupees)' value={emiInterface[currCard].principal} />
                         <input min={0} max={100} name='rate' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Rate of Interest (%)' value={emiInterface[currCard].rate} />
                         <input min={0} max={120} name='tenure' className='custom-input p-2' type="number" onChange={changeInput} placeholder='Tenure (Months)' value={emiInterface[currCard].tenure} />

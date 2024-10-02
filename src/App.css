@@ -18,6 +18,10 @@
   outline: none !important;
   padding: 1%;
 }
+.custom-input{
+  width: 100%;
+  margin-bottom: 2dvw;
+}
 
 input {
   outline: none;

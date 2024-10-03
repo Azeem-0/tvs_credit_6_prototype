@@ -12,7 +12,7 @@ const NavigationBar = () => {
             }} className="w-[10em] mx-auto cursor-pointer" src={tvsCreditImage} alt="tvs-credit-logo" />
 
             <div className="flex flex-col justify-center items-center">
-                <h2 className="text-2xl font-bold text-center text-gray-800">Welcome to the App!</h2>
+                <h2 className="text-2xl font-bold text-center text-gray-800">TVS Credit Loan Suggestor💰</h2>
             </div>
 
             <div className="flex justify-center items-center">

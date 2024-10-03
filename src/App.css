@@ -48,7 +48,8 @@
 }
 
 dialog::backdrop {
-  background-color: white;
+  background-color: transparent;
+  backdrop-filter: blur(5px);
 }
 
 input {

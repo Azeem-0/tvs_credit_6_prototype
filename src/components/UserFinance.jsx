@@ -33,14 +33,14 @@ export default function UserFinance() {
     console.log(JSON.parse(localStorage.getItem('user')));
 
     return (
-        <div className=' relative w-3/4 h-3/4 bg-[#EBF4F1] h-fill flex items-center justify-center flex-col p-2 m-auto rounded-2xl'>
-            <ImCross onClick={toggleUserFinance} className="absolute top-10 right-10 cursor-pointer rounded-xl text-red-600 m-2" />
+        <div className=' relative w-3/4 h-3/4 bg-[#EBF4F1] h-fill flex items-center justify-center flex-col p-2 m-auto rounded-2xl border-2 border-[#bdbdbd]'>
+            <ImCross onClick={toggleUserFinance} className="absolute top-10 right-10 cursor-pointer rounded-xl m-2" />
             <h5 className='text-xl m-2 font-bold'>Let us know you!</h5>
             <div className='flex items-center justify-around p-2.5 w-full m-2'>
                 <div className='flex flex-col items-center justify-between gap-2 w-2/4 h-2/4'>
                     <div className=" flex flex-row justify-between gap-3">
-                        <input name='income' onChange={handleFormChange} type='number' min={0} className='custom-input p-2' placeholder='Monthly Income (in thousands)' required title="Monthly Income (in thousands)"/>
-                        <input name='savings' onChange={handleFormChange} type='number' min={0} className='custom-input p-2' placeholder='Monthly Savings (in thousands)' required title="Monthly Savings (in thousands)"/>
+                        <input name='income' onChange={handleFormChange} type='number' min={0} className='custom-input p-2' placeholder='Monthly Income (in thousands)' required title="Monthly Income (in thousands)" />
+                        <input name='savings' onChange={handleFormChange} type='number' min={0} className='custom-input p-2' placeholder='Monthly Savings (in thousands)' required title="Monthly Savings (in thousands)" />
                     </div>
                     <div className=" flex flex-row justify-between gap-3">
                         <input name='debts' onChange={handleFormChange} type='number' min={0} className='custom-input p-2' placeholder='Monthly Debts (in thousands)' required />
@@ -58,7 +58,7 @@ export default function UserFinance() {
                         </div>
                     </div>
                     <div className='w-full flex items-center justify-around'>
-                        <button onClick={saveUserFinance} className='custom-button min-w-20 opacity-90'>Save profile</button>
+                        <button onClick={saveUserFinance} className='custom-button min-w-20 p-1 opacity-90'>Save profile</button>
                     </div>
                 </div>
             </div>

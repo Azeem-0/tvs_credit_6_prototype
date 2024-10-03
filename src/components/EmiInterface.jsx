@@ -136,28 +136,28 @@ const EmiInterface = () => {
         }
     }, [emiInterface[currCard].tenure, emiInterface[currCard].loan_details]);
 
-    // useEffect(() => {
-    //     const dialogBox = document.getElementById('user-finance-dialog');
-    //     if (userFPopUp) {
-    //         dialogBox.showModal();
-    //     }
-    //     else {
-    //         dialogBox.close();
-    //     }
-    // }, [userFPopUp]);
+    useEffect(() => {
+        const dialogBox = document.getElementById('user-finance-dialog');
+        if (userFPopUp) {
+            dialogBox.showModal();
+        }
+        else {
+            dialogBox.close();
+        }
+    }, [userFPopUp]);
 
     return (
-        <div className='w-screen h-1/2 flex justify-center items-center'>
+        <div className='w-screen h-3/5 flex justify-center items-center'>
 
             {/* trying to do the same with dialog box let's see */}
 
-            {/* <dialog id='user-finance-dialog' className='bg-white'>
+            <dialog id='user-finance-dialog' className='bg-transparent'>
                 <UserFinance />
-            </dialog> */}
+            </dialog>
 
-            {userFPopUp && <div className='flex justify-center items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-3/4 z-10 rounded-md'>
+            {/* {userFPopUp && <div className='flex justify-center items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-3/4 z-10 rounded-md'>
                 <UserFinance />
-            </div>}
+            </div>} */}
 
             <div className=' w-2/3 h-full bg-[#EAF4F0] flex justify-between rounded-2xl'>
                 {currCard > 0 && <p className='top-0 bg-[#167E1B] w-8 h-8 flex items-center justify-center rounded-full font-extrabold text-white'>{currCard}</p>}

@@ -50,8 +50,12 @@ export default function Prediction(data) {
                             </div>
                         </div>
                     </div>
-                        <div title={`${card.prediction}%`} className='bg-white w-3/4 h-2 mx-auto rounded-full flex items-center justify-start border-black border-2 cursor-pointer'>
-                            <div className={`h-2 my-4 rounded-full bg-[#167E1B]`} style={{ width: `${card.prediction}%` }}></div>
+                        <div title={`${card.prediction}%`} className='bg-slate-200 w-3/4 h-2 mx-auto rounded-full flex items-center justify-start border-white border-[1] cursor-pointer'>
+                            <div className={`h-2 my-4 rounded-full progress-bar`} style={{ width: `${Math.max(card.prediction,3)}%` }}></div>
+                        </div>
+                        <div className='flex items-center justify-center m-2'>
+                            <p className='text-slate-500'>TVS suggestion score - </p>
+                            <p className='font-bold mx-1'>{card.prediction}%</p>
                         </div>
                     </div>
             ))}

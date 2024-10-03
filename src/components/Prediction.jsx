@@ -47,8 +47,10 @@ export default function Prediction(data) {
                             </div>
                         </div>
                     </div>
-                    <div className={`h-2 my-4 mx-2 rounded-full bg-[#167E1B]`} style={{ width: `${card.prediction}%` }}></div>
-                </div>
+                        <div title={`${card.prediction}%`} className='bg-white w-3/4 h-2 mx-auto rounded-full flex items-center justify-start border-black border-2 cursor-pointer'>
+                            <div className={`h-2 my-4 rounded-full bg-[#167E1B]`} style={{ width: `${card.prediction}%` }}></div>
+                        </div>
+                    </div>
             ))}
         </div>
     )

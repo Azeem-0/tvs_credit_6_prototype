@@ -18,6 +18,7 @@
   outline: none !important;
   padding: 1%;
 }
+
 .custom-input {
   width: 100%;
   margin-bottom: 2dvw;
@@ -26,11 +27,13 @@
   opacity: .8;
   border-radius: 5px;
 }
-.read-only-input{
-  border: none!important;
+
+.read-only-input {
+  border: none !important;
   border-bottom: 5px solid #000;
   cursor: not-allowed;
 }
+
 .custom-button {
   text-align: center;
   font-size: 0.75rem;
@@ -41,6 +44,11 @@
   height: 80%;
   margin: 2%;
 }
+
+dialog::backdrop {
+  background-color: white;
+}
+
 input {
   outline: none;
 }

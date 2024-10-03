@@ -95,6 +95,7 @@ const EmiInterface = () => {
 
     const navigate = useNavigate();
     const handlePredict = () => {
+
         setEmiInterface((prevData) => {
             const stateCopy = [...prevData];
             stateCopy.pop();
@@ -102,6 +103,8 @@ const EmiInterface = () => {
             navigate("/predict", { state: stateCopy });
             return stateCopy;
         });
+
+        localStorage.removeItem('user');
     }
 
     useEffect(() => {
@@ -125,7 +128,7 @@ const EmiInterface = () => {
         }
     }, [emiInterface[currCard].principal, emiInterface[currCard].rate, emiInterface[currCard].tenure]);
 
-    console.log(!localStorage.getItem('user'));
+    // console.log(!localStorage.getItem('user'));
 
     useEffect(() => {
         if (emiInterface[currCard].tenure && emiInterface[currCard].loan_details) {
@@ -133,8 +136,24 @@ const EmiInterface = () => {
         }
     }, [emiInterface[currCard].tenure, emiInterface[currCard].loan_details]);
 
+    // useEffect(() => {
+    //     const dialogBox = document.getElementById('user-finance-dialog');
+    //     if (userFPopUp) {
+    //         dialogBox.showModal();
+    //     }
+    //     else {
+    //         dialogBox.close();
+    //     }
+    // }, [userFPopUp]);
+
     return (
         <div className='w-screen h-1/2 flex justify-center items-center'>
+
+            {/* trying to do the same with dialog box let's see */}
+
+            {/* <dialog id='user-finance-dialog' className='bg-white'>
+                <UserFinance />
+            </dialog> */}
 
             {userFPopUp && <div className='flex justify-center items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-3/4 z-10 rounded-md'>
                 <UserFinance />
@@ -184,7 +203,7 @@ const EmiInterface = () => {
                         </div>
                     </div>
                     <div className='w-full flex justify-around'>
-                        <button onClick={addNewComparision} className={`${(emiInterface[currCard].principal && emiInterface[currCard].rate && emiInterface[currCard].tenure && localStorage.getItem('user')) ? " opacity-100 " : " opacity-50 cursor-not-allowed"} custom-button`} title={`${(!(emiInterface[currCard].principal && emiInterface[currCard].rate && emiInterface[currCard].tenure) || !localStorage.getItem('user')) ? 'please fill details' : ''}`} disabled={(!(emiInterface[currCard].principal && emiInterface[currCard].rate && emiInterface[currCard].tenure)) || !localStorage.getItem('user')}>Compare To</button>
+                        <button onClick={addNewComparision} className={`${(emiInterface[currCard].principal && emiInterface[currCard].rate && emiInterface[currCard].tenure && localStorage.getItem('user')) ? " opacity-100 " : " opacity-50 cursor-not-allowed"} custom-button`} title={`${(!(emiInterface[currCard].principal && emiInterface[currCard].rate && emiInterface[currCard].tenure) || !localStorage.getItem('user')) ? 'please fill user finance details' : ''}`} disabled={(!(emiInterface[currCard].principal && emiInterface[currCard].rate && emiInterface[currCard].tenure)) || !localStorage.getItem('user')}>Compare To</button>
                         <button onClick={handlePredict} className={`${currCard >= 1 ? " block " : " hidden "} custom-button ${financeData.income && financeData.savings && financeData.debts && financeData.emi ? " opacity-100 " : " opacity-50 cursor-not-allowed "}`}>Predict</button>
                         <button onClick={() => {
                             setUserFPopUp((prev) => (

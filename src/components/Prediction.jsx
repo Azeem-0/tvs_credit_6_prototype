@@ -20,7 +20,7 @@ export default function Prediction(data) {
                             <div className='w-full flex items-center justify-start p-2'>
                                 <p className='text-gray-500 mx-2 text-lg'>Loan Amount</p>
                                 <>
-                                    <p className='font-extrabold text-lg'>₹{formatNumber(card.principal)}</p>
+                                    <p className='font-extrabold text-lg'>₹{formatNumber(parseInt(card.principal))}</p>
                                     <img alt='principal' src='https://media.lordicon.com/icons/wired/lineal/291-coin-dollar.svg' className='w-6' />
                                 </>
                             </div>

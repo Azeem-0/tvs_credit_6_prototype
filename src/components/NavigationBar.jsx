@@ -17,7 +17,7 @@ const NavigationBar = () => {
 
             <div className="flex justify-center items-center">
                 <mark className="bg-white rounded-lg shadow-md p-1">
-                    <strong className="text-lg text-gray-800">TEAM NAME: svssatvhvik77</strong>
+                    <strong className="text-lg text-gray-800">TEAM NAME: svssathvik77</strong>
                 </mark>
             </div>
         </div>

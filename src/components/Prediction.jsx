@@ -38,6 +38,13 @@ export default function Prediction(data) {
                                     <img alt='principal' src='https://media.lordicon.com/icons/wired/lineal/45-clock-time.svg' className='w-8' />
                                 </>
                             </div>
+                            <div className='w-full flex items-center justify-start p-2'>
+                                <p className='text-gray-500 mx-2 text-lg'>Loan Type</p>
+                                <>
+                                    <p className='font-extrabold text-lg'>{(card.loan_details[0])}</p>
+                                    <img alt='principal' src='https://vishwasbank.com/img/loan/home.png' className='w-8' />
+                                </>
+                            </div>
                         </div>
                         <div className='flex items-center justify-around w-full text-white'>
                             <div className='bg-[#167E1B] flex items-center justify-center flex-col p-2 w-fit rounded-xl scale-95'>

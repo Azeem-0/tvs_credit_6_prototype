@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
+import { FcCurrencyExchange } from 'react-icons/fc';
 const formatNumber = (number)=>{
     return number.toLocaleString();
 }
@@ -42,7 +43,7 @@ export default function Prediction(data) {
                                 <p className='text-gray-500 mx-2 text-lg'>Loan Type</p>
                                 <>
                                     <p className='font-extrabold text-lg'>{(card.loan_details[0])}</p>
-                                    <img alt='principal' src='https://vishwasbank.com/img/loan/home.png' className='w-8' />
+                                    <FcCurrencyExchange className='text-2xl mx-1'/>
                                 </>
                             </div>
                         </div>

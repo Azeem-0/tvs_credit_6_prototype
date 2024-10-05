@@ -11,8 +11,8 @@ The current EMI calculator on our website only provides simple interest calculat
 
 ## Installation
 ```
-git clone https://github.com/svssathvik7/hungerhelp.git
-cd hungerhelp
+git clone https://github.com/Azeem-0/tvs_credit_6_prototype.git
+cd tvs_credit_6_prototype
 npm install
 npm start
 ```

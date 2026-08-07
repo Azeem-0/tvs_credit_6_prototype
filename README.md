@@ -11,7 +11,7 @@ The current EMI calculator on our website only provides simple interest calculat
 
 ## Installation
 ```
-git clone https://github.com/Azeem-0/tvs_credit_6_prototype.git
+git clone https://github.com/azeemshaik025/tvs_credit_6_prototype.git
 cd tvs_credit_6_prototype
 npm install
 npm start
